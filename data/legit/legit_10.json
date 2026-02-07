@@ -1,0 +1,13 @@
+{
+  "address": "0xLEGIT010",
+  "name": "DeflationaryToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract DeflationaryToken {\n    mapping(address => uint256) public balances;\n    uint256 public totalSupply;\n    address public constant BURN_ADDRESS = address(0);\n    \n    constructor(uint256 _supply) {\n        totalSupply = _supply;\n        balances[msg.sender] = _supply;\n    }\n    \n    function transfer(address to, uint256 amount) public returns (bool) {\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        \n        // 1% burn on each transfer (deflationary)\n        uint256 burnAmount = amount / 100;\n        uint256 transferAmount = amount - burnAmount;\n        \n        balances[msg.sender] -= amount;\n        balances[to] += transferAmount;\n        totalSupply -= burnAmount;  // Actually reduces supply\n        \n        return true;\n    }\n}\n    ",
+  "label": "LEGIT",
+  "social": {
+    "twitter_age_days": 730,
+    "follower_count": 500000,
+    "hype_score": 0.3,
+    "team_verified": true,
+    "whitepaper_plagiarism": 0.0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "address": "0xLEGIT001",
+  "name": "StandardToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract StandardToken {\n    mapping(address => uint256) public balances;\n    uint256 public totalSupply;\n    \n    constructor(uint256 _initialSupply) {\n        totalSupply = _initialSupply;\n        balances[msg.sender] = _initialSupply;\n    }\n    \n    // Standard transfer (safe)\n    function transfer(address to, uint256 amount) public returns (bool) {\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n        return true;\n    }\n    \n    // Check balance (safe)\n    function balanceOf(address account) public view returns (uint256) {\n        return balances[account];\n    }\n    \n    // No mint function - supply is fixed \u2713\n    // No owner privileges \u2713\n    // No drain function \u2713\n}\n    ",
+  "label": "LEGIT",
+  "safety_features": [
+    "no mint function - fixed supply",
+    "no owner privileges",
+    "standard ERC20 implementation",
+    "no hidden functions"
+  ]
+}

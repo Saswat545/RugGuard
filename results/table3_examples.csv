@@ -1,0 +1,3 @@
+Contract,True Label,Prediction,Confidence,Key Indicator
+FakeMoonToken,SCAM,SCAM,99.2%,"mint + drain functions, high hype_score"
+SafeToken,LEGIT,LEGIT,98.5%,"Fixed supply, verified team, professional tone"

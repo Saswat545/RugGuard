@@ -1,0 +1,13 @@
+{
+  "total_contracts": 4,
+  "scam_count": 2,
+  "legit_count": 2,
+  "scam_files": [
+    "scam_1.json",
+    "scam_2.json"
+  ],
+  "legit_files": [
+    "legit_1.json",
+    "legit_2.json"
+  ]
+}

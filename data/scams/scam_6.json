@@ -1,0 +1,13 @@
+{
+  "address": "0xSCAM006",
+  "name": "PausableScam",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract PausableScam {\n    mapping(address => uint256) public balances;\n    address public owner;\n    bool public paused = false;\n    \n    constructor() {\n        owner = msg.sender;\n    }\n    \n    function transfer(address to, uint256 amount) public {\n        require(!paused, \"Trading paused\");\n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n    }\n    \n    // SCAM: Owner can pause trading forever\n    function setPaused(bool _paused) public {\n        require(msg.sender == owner);\n        paused = _paused;\n    }\n}\n    ",
+  "label": "SCAM",
+  "social": {
+    "twitter_age_days": 5,
+    "follower_count": 2000,
+    "hype_score": 0.95,
+    "team_verified": false,
+    "whitepaper_plagiarism": 0.95
+  }
+}

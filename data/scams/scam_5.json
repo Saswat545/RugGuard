@@ -1,0 +1,13 @@
+{
+  "address": "0xSCAM005",
+  "name": "HighTaxToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract HighTaxToken {\n    mapping(address => uint256) public balances;\n    address public owner;\n    uint256 public sellTax = 50;  // SCAM: 50% tax on selling!\n    \n    constructor() {\n        owner = msg.sender;\n    }\n    \n    function transfer(address to, uint256 amount) public {\n        uint256 taxAmount = (amount * sellTax) / 100;\n        balances[owner] += taxAmount;  // SCAM: Owner takes 50%\n        balances[to] += (amount - taxAmount);\n    }\n}\n    ",
+  "label": "SCAM",
+  "social": {
+    "twitter_age_days": 30,
+    "follower_count": 500,
+    "hype_score": 0.95,
+    "team_verified": false,
+    "whitepaper_plagiarism": 0.95
+  }
+}

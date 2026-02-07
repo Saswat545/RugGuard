@@ -1,0 +1,11 @@
+{
+  "Total Contracts": 20,
+  "Scam Contracts": 10,
+  "Legitimate Contracts": 10,
+  "Features Analyzed": 22,
+  "Code Features": 17,
+  "Social Features": 5,
+  "Model Type": "Random Forest",
+  "Trees in Forest": 100,
+  "Final Accuracy": "100.0%"
+}

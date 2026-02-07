@@ -1,0 +1,12 @@
+{
+  "address": "0xLEGIT002",
+  "name": "SafeToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract SafeToken {\n    mapping(address => uint256) public balances;\n    uint256 public constant MAX_SUPPLY = 1000000;\n    uint256 public totalSupply;\n    \n    constructor() {\n        totalSupply = MAX_SUPPLY;\n        balances[msg.sender] = MAX_SUPPLY;\n    }\n    \n    function transfer(address to, uint256 amount) public returns (bool) {\n        require(to != address(0), \"Invalid address\");\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        \n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n        \n        return true;\n    }\n    \n    // Public, transparent functions only \u2713\n    // No owner controls \u2713\n    // Fixed max supply \u2713\n}\n    ",
+  "label": "LEGIT",
+  "safety_features": [
+    "fixed maximum supply",
+    "no owner address",
+    "transparent functions",
+    "input validation"
+  ]
+}

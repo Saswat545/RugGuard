@@ -1,0 +1,11 @@
+{
+  "address": "0xSCAM002",
+  "name": "HoneyPotToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract HoneyPotToken {\n    mapping(address => uint256) public balances;\n    address private owner;\n    bool public tradingEnabled = false;  // SCAM: Initially disabled\n    \n    function buy() public payable {\n        balances[msg.sender] += msg.value * 1000;  // You CAN buy\n    }\n    \n    function sell(uint256 amount) public {\n        require(tradingEnabled, \"Trading disabled\");  // SCAM: Can't sell!\n        // This will always fail because tradingEnabled = false\n    }\n    \n    // Only owner can enable trading (and they never will)\n    function enableTrading() public {\n        require(msg.sender == owner);\n        tradingEnabled = true;  // SCAM: Owner never calls this\n    }\n}\n    ",
+  "label": "SCAM",
+  "scam_indicators": [
+    "honeypot pattern - can buy but can't sell",
+    "trading permanently disabled",
+    "owner control over trading"
+  ]
+}

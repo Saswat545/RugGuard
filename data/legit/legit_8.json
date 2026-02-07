@@ -1,0 +1,13 @@
+{
+  "address": "0xLEGIT008",
+  "name": "TimelockToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract TimelockToken {\n    mapping(address => uint256) public balances;\n    mapping(address => uint256) public unlockTime;\n    uint256 public totalSupply;\n    \n    constructor(uint256 _supply) {\n        totalSupply = _supply;\n        balances[msg.sender] = _supply;\n    }\n    \n    function transfer(address to, uint256 amount) public returns (bool) {\n        require(block.timestamp >= unlockTime[msg.sender], \"Tokens locked\");\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        \n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n        \n        return true;\n    }\n    \n    // Users can lock their own tokens (vesting)\n    function lockTokens(uint256 duration) public {\n        unlockTime[msg.sender] = block.timestamp + duration;\n    }\n}\n    ",
+  "label": "LEGIT",
+  "social": {
+    "twitter_age_days": 730,
+    "follower_count": 10000,
+    "hype_score": 0.4,
+    "team_verified": true,
+    "whitepaper_plagiarism": 0.15
+  }
+}

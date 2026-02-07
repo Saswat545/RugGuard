@@ -1,0 +1,13 @@
+{
+  "address": "0xSCAM010",
+  "name": "WhaleToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract WhaleToken {\n    mapping(address => uint256) public balances;\n    address public owner;\n    \n    constructor() {\n        owner = msg.sender;\n        balances[owner] = 1000000000;  // SCAM: Owner holds 99% of supply\n    }\n    \n    function transfer(address to, uint256 amount) public {\n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n    }\n}\n    ",
+  "label": "SCAM",
+  "social": {
+    "twitter_age_days": 10,
+    "follower_count": 500,
+    "hype_score": 1.0,
+    "team_verified": false,
+    "whitepaper_plagiarism": 0.95
+  }
+}

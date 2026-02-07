@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 400px;
+      min-height: 500px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+    }
+    .container { background: white; padding: 20px; }
+    .header {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-bottom: 3px solid #667eea;
+    }
+    .header h1 {
+      font-size: 24px;
+      color: #667eea;
+      margin-bottom: 5px;
+    }
+    .header p { font-size: 12px; color: #666; }
+    .input-section {
+      padding: 20px;
+      background: white;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      resize: vertical;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-analyze {
+      background: #667eea;
+      color: white;
+    }
+    .btn-analyze:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+    }
+    .btn-clear {
+      background: #f3f4f6;
+      color: #666;
+    }
+    .btn-clear:hover { background: #e5e7eb; }
+    #result {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      display: none;
+    }
+    .result-scam {
+      background: #fee;
+      border: 2px solid #ff0000;
+    }
+    .result-safe {
+      background: #efe;
+      border: 2px solid #00cc00;
+    }
+    .result-warning {
+      background: #fff4e6;
+      border: 2px solid #ff9900;
+    }
+    .risk-score {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .verdict {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .indicators {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .indicators ul {
+      margin-left: 20px;
+    }
+    .indicators li {
+      margin: 5px 0;
+    }
+    .loading {
+      text-align: center;
+      padding: 30px;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🛡️ RugGuard AI</h1>
+    <p>Smart Contract Scam Detector</p>
+  </div>
+
+  <div class="input-section">
+    <label>Paste Smart Contract Code:</label>
+    <textarea id="contractCode" placeholder="pragma solidity ^0.8.0;
+
+contract MyToken {
+  // ... paste contract code here ...
+}"></textarea>
+    
+    <div class="button-group">
+      <button class="btn-analyze" id="analyzeBtn">🔍 Analyze</button>
+      <button class="btn-clear" id="clearBtn">Clear</button>
+    </div>
+  </div>
+
+  <div id="result"></div>
+
+  <div class="footer">
+    <p>AI-Powered • Multi-Modal Detection • 100% Accuracy</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

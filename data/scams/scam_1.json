@@ -1,0 +1,12 @@
+{
+  "address": "0xSCAM001",
+  "name": "FakeMoonToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract FakeMoonToken {\n    mapping(address => uint256) public balances;\n    address public owner;\n    \n    constructor() {\n        owner = msg.sender;\n    }\n    \n    // Normal transfer function (looks legit)\n    function transfer(address to, uint256 amount) public {\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n    }\n    \n    // SCAM: Owner can mint unlimited tokens (HIDDEN!)\n    function mint(uint256 amount) public {\n        require(msg.sender == owner, \"Only owner\");\n        balances[owner] += amount;  // SCAM: Creates tokens from nothing\n    }\n    \n    // SCAM: Owner can drain all funds\n    function drain() private {\n        payable(owner).transfer(address(this).balance);  // SCAM: Steals money\n    }\n}\n    ",
+  "label": "SCAM",
+  "scam_indicators": [
+    "mint function - owner can create unlimited tokens",
+    "drain function - can steal all funds",
+    "no liquidity lock",
+    "owner has too much control"
+  ]
+}

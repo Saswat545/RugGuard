@@ -1,0 +1,11 @@
+Feature,Importance,Type
+hype_score,0.1848276441329326,Social
+follower_count,0.18031848938098935,Social
+whitepaper_plagiarism,0.17634122491265353,Social
+team_verified,0.13469343292872707,Social
+code_length,0.09859192876839934,Code
+twitter_age_days,0.09200336700336699,Social
+owner_count,0.05689583361286657,Code
+has_require,0.02088715750480457,Code
+has_owner,0.014025898869648869,Code
+has_payable,0.01289470763154974,Code

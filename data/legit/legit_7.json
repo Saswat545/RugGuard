@@ -1,0 +1,13 @@
+{
+  "address": "0xLEGIT007",
+  "name": "TransparentToken",
+  "code": "\npragma solidity ^0.8.0;\n\ncontract TransparentToken {\n    mapping(address => uint256) public balances;\n    uint256 public totalSupply;\n    \n    // Events for transparency\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Mint(address indexed to, uint256 value);\n    \n    constructor(uint256 _initialSupply) {\n        require(_initialSupply > 0, \"Supply must be positive\");\n        totalSupply = _initialSupply;\n        balances[msg.sender] = _initialSupply;\n    }\n    \n    function transfer(address to, uint256 amount) public returns (bool) {\n        require(to != address(0), \"Invalid address\");\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\n        \n        balances[msg.sender] -= amount;\n        balances[to] += amount;\n        \n        emit Transfer(msg.sender, to, amount);\n        return true;\n    }\n}\n    ",
+  "label": "LEGIT",
+  "social": {
+    "twitter_age_days": 1000,
+    "follower_count": 50000,
+    "hype_score": 0.4,
+    "team_verified": true,
+    "whitepaper_plagiarism": 0.15
+  }
+}

@@ -1,0 +1,6 @@
+flask
+flask-cors
+web3
+requests
+numpy
+joblib
